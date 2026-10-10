@@ -1,0 +1,18 @@
+#cloud-config
+package_update: true
+packages:
+  - apache2
+write_files:
+  - path: /var/www/html/index.html
+    content: |
+      <!DOCTYPE html>
+      <html>
+      <head><title>Week 7 VM</title></head>
+      <body>
+        <h1>Hello, ${student_name}!</h1>
+        <p>${page_message}</p>
+      </body>
+      </html>
+runcmd:
+  - systemctl enable apache2
+  - systemctl start apache2
